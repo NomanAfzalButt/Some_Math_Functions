@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Functions</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.2.1/math.js"></script>
+    <style>
+        body {
+            font-family:'Franklin Gothic Medium';
+            background-color: rgba(161, 10, 216, 0.774);
+            text-align: center;
+        }
+        input {
+            font-family: 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Square Root</h1>
+    <form onsubmit="dosqrt(); return false">
+    <label for="Input">Enter Number</label> <input type="Number" id="sqrt_txt">
+    <button type="submit">Submit</button>
+    </form>
+    <h3 id="sqrt_result"></h3>
+
+    <h1>Derivatives</h1>
+    <form onsubmit="doDerivative(); return false">
+    <label for="Input">Enter Expression</label> <input type="text" id="deriv_txt" placeholder="x^2 + x"> <label for="input">Enter Constant</label><input type="text" id="var_txt" placeholder="x">
+    <button type="submit">Submit</button>
+    </form>
+    <h3 id="deriv_result"></h3>
+
+    <h1>Power</h1>
+    <form onsubmit="doPower(); return false">
+    <label for="Input">Enter Base</label> <input type="number" id="base_txt"> <label for="input">Enter Power</label><input type="number" id="power_txt">
+    <button type="submit">Submit</button>
+    </form>
+    <h3 id="power_result"></h3>
+
+
+    <script>
+        let dosqrt = () => {
+            let input = +document.querySelector("#sqrt_txt").value;
+
+            let result = math.sqrt(input);
+
+            document.querySelector("#sqrt_result").innerHTML = result;
+        }
+        
+        let doDerivative = () => {
+            let input = document.querySelector("#deriv_txt").value;
+            let input2 = document.querySelector("#var_txt").value;
+            let result = math.derivative(input,input2);
+
+            document.querySelector("#deriv_result").innerHTML = result;
+        }
+
+        let doPower = () => {
+            let input = +document.querySelector("#base_txt").value;
+            let input2 = +document.querySelector("#power_txt").value;
+            let result = math.pow(input,input2);
+
+            document.querySelector("#power_result").innerHTML = result;
+        }
+    </script>
+</body>
+</html>
